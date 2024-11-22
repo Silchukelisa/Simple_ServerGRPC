@@ -1,0 +1,19 @@
+syntax = "proto3";
+package  org.tyt.grpc;
+
+message HelloRequest{
+  string name = 1;
+  repeated string hobbies = 2;
+}
+
+message HelloResponse{
+  string greeting = 1;
+}
+
+service GreetingService{
+  //когда хотим возвращать 1 response
+  rpc greeting(HelloRequest) returns (HelloResponse);
+
+  //когда хотим возвращать поток данных
+  //rpc greeting(HelloRequest) returns (stream HelloResponse);
+}
